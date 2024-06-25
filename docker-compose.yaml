@@ -1,0 +1,58 @@
+services:
+    db_auto_interface:
+        container_name: db_automobiles
+        ports:
+            - "8800:8800"
+        build:
+            context: .
+        networks:
+            - db_auto
+
+    db_auto:
+        container_name: db_auto
+        ports:
+            - "5440:5440"
+        environment:
+            - POSTGRES_DB=UserData
+            - POSTGRES_PASSWORD=dbAutoFarvater
+            - POSTGRES_USER=dbAuto
+        image: postgres:alpine3.18
+
+        healthcheck:
+            test: ["CMD", "pg_isready -U admin -d postgres"]
+            interval: 10s
+            timeout: 5s
+            retries: 5
+            start_period: 10s
+
+        restart: unless-stopped
+
+        deploy:
+            resources:
+                limits:
+                    cpus: '1'
+                    memory: 4G
+
+        networks:
+            - db_auto
+
+        volumes:
+            - db_auto:/var/lib/postgresql/data/
+            - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+    adminer:
+        image: adminer
+        restart: always
+        ports:
+            - "8090:8080"
+
+        networks:
+            - db_auto
+
+networks:
+    db_auto:
+        driver: bridge
+    
+    
+volumes:
+    db_auto: null

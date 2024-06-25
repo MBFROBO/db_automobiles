@@ -1,0 +1,40 @@
+#upperBar img {
+    position: relative;
+    display: flex;
+    top: 3px;
+    left: 20px;
+    height: 50px;
+    width: 200px;
+}
+
+#inform_form {
+    background-repeat: no-repeat;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.171), rgba(167, 200, 243, 0.432)),
+                    url('/static/image/logo_2.png');
+    background-position: 55% 25vh;
+    transition: 0.3s;
+}
+
+/* #inform_form:hover {
+    background-repeat: no-repeat;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(55, 137, 245, 0.432)),
+                    url('/static/image/logo_2.png');
+    background-position: 55% 25vh;
+    transition: 0.3s;
+} */
+
+
+
+/* @media (max-width: 2160px) {
+    body {
+        background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(55, 246, 253, 0.384)),
+                    url('/static/image/background_body_fhd.svg');
+    }
+}
+
+@media (min-width: 3000px) and (max-width: 3800px) {
+    body {
+        background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(160, 242, 245, 0.432)),
+                    url('/static/image/background_body_2k.svg');
+    }
+} */
